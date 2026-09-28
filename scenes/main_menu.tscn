@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://bjp8b76cbgjo1"]
+
+[ext_resource type="Theme" uid="uid://bbmgfth4eqy1e" path="res://resources/themes/BaseMenuTheme.tres" id="1_06t4h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ui8po"]
+line_spacing = 0.0
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_tlvka"]
+font_size = 50
+
+[node name="MainMenu" type="CanvasLayer" unique_id=125867251]
+
+[node name="Control" type="Control" parent="." unique_id=1787613716]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_06t4h")
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1693060253]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.39, 0.39, 0.39, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control" unique_id=1640521584]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_top = 151.0
+offset_right = 77.0
+offset_bottom = 265.0
+grow_horizontal = 2
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer2" unique_id=1112735346]
+layout_mode = 2
+text = "I became a"
+label_settings = SubResource("LabelSettings_ui8po")
+
+[node name="Label" type="Label" parent="Control/VBoxContainer2" unique_id=1761837595]
+layout_mode = 2
+text = "BACKPACK"
+label_settings = SubResource("LabelSettings_tlvka")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/VBoxContainer2" unique_id=1334903471]
+layout_mode = 2
+text = "and now I'm stuck in a monochrom dungeon?"
+label_settings = SubResource("LabelSettings_ui8po")
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1513464571]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = 11.5
+offset_right = 35.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Btn_Play" type="Button" parent="Control/VBoxContainer" unique_id=1666822507]
+layout_mode = 2
+text = "Play"
+
+[node name="Btn_Options" type="Button" parent="Control/VBoxContainer" unique_id=787287171]
+layout_mode = 2
+text = "Options"
+
+[node name="Btn_Quit" type="Button" parent="Control/VBoxContainer" unique_id=1337784430]
+layout_mode = 2
+text = "Quit"

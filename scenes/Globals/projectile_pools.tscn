@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bm8mask600bsx"]
+
+[ext_resource type="Script" uid="uid://dc468j2gsop2c" path="res://resources/scripts/projectile_pools_logic.gd" id="1_atu3d"]
+[ext_resource type="Script" uid="uid://c3wml74qa6daj" path="res://resources/scripts/projectile_pool.gd" id="2_6fnlf"]
+[ext_resource type="PackedScene" uid="uid://cs647yt4hcrl7" path="res://scenes/projectiles/base_projectile.tscn" id="3_4yndq"]
+
+[sub_resource type="Resource" id="Resource_qk3t0"]
+script = ExtResource("2_6fnlf")
+projectile = ExtResource("3_4yndq")
+amount = 10
+metadata/_custom_type_script = "uid://c3wml74qa6daj"
+
+[node name="ProjectilePoolsLogic" type="Node2D" unique_id=870387262]
+script = ExtResource("1_atu3d")
+pools_parameters = Dictionary[String, ExtResource("2_6fnlf")]({
+"base": SubResource("Resource_qk3t0")
+})
+metadata/_custom_type_script = "uid://dc468j2gsop2c"

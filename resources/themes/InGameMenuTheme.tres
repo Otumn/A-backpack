@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://js58e2t6bkwv"]
+
+[resource]
+HBoxContainer/constants/separation = 0
+VFlowContainer/constants/h_separation = 0
+VFlowContainer/constants/v_separation = 0

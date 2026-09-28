@@ -1,0 +1,18 @@
+[gd_resource type="TileSet" format=3 uid="uid://dacous2helmgr"]
+
+[ext_resource type="PackedScene" uid="uid://c75ei1pe2lp0j" path="res://scenes/mobs/mob_spawner.tscn" id="1_1tuop"]
+[ext_resource type="PackedScene" uid="uid://ddbvk5vmncsty" path="res://scenes/interactible/chest.tscn" id="2_8gtxm"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_wtok4"]
+tile_data = PackedInt32Array(0, 131072, 805306369, 65536, 131072, 1342177281, 1, 131072, 1610612737, 65537, 131072, 1)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_i6hl2"]
+scenes/1/scene = ExtResource("1_1tuop")
+scenes/2/scene = ExtResource("2_8gtxm")
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetScenesCollectionSource_i6hl2")
+pattern_0 = SubResource("TileMapPattern_wtok4")

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="AttackProfile" format=3 uid="uid://bafcgw0dqtd0i"]
+
+[ext_resource type="Script" uid="uid://cvo4we8n4aia2" path="res://resources/scripts/resources/attack_profile.gd" id="1_uvm2b"]
+
+[resource]
+script = ExtResource("1_uvm2b")
+metadata/_custom_type_script = "uid://cvo4we8n4aia2"

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cswcf6epv15ko"]
+
+[ext_resource type="Script" uid="uid://dpsdcy4brmiqf" path="res://addons/GlobalCamera2D/global_2D_cam.gd" id="1_c5uqy"]
+
+[node name="Global2DCamera" type="Camera2D" unique_id=1535382334]
+ignore_rotation = false
+script = ExtResource("1_c5uqy")
+metadata/_custom_type_script = "uid://dpsdcy4brmiqf"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1785757372]
+
+[node name="FadeRect" type="ColorRect" parent="CanvasLayer" unique_id=450968624]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

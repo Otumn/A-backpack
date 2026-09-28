@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://brcubsjbwflkh"]
+
+[ext_resource type="Script" uid="uid://ctm6ywoskwlnc" path="res://resources/scripts/pickable/weapon_pick_up.gd" id="1_d3b0t"]
+[ext_resource type="Texture2D" uid="uid://ddpknmysrls6t" path="res://resources/sprites/weapons/Set_BaseWeapons.png" id="2_ptfm8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xlqa3"]
+radius = 15.0
+
+[node name="WeaponPickUp" type="Area2D" unique_id=1593555730]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_d3b0t")
+metadata/_custom_type_script = "uid://ctm6ywoskwlnc"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1846756503]
+visible = false
+texture_filter = 1
+texture = ExtResource("2_ptfm8")
+hframes = 10
+vframes = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1115052782]
+shape = SubResource("CircleShape2D_xlqa3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

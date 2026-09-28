@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dnom6njcs1eja"]
+
+[ext_resource type="Script" uid="uid://chqetbt6u33il" path="res://resources/scripts/managers/played_floor.gd" id="1_w5sj3"]
+[ext_resource type="Resource" uid="uid://0eaxil8q6h3g" path="res://resources/TestFloor.tres" id="2_48hb2"]
+
+[node name="PlayedFloor" type="Node2D" unique_id=552686263]
+script = ExtResource("1_w5sj3")
+p = ExtResource("2_48hb2")
+metadata/_custom_type_script = "uid://chqetbt6u33il"
+
+[node name="PlayerParent" type="Node2D" parent="." unique_id=1053947958]
+
+[node name="RoomParent" type="Node2D" parent="." unique_id=2113627055]
+z_index = -1

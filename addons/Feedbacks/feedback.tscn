@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bck65su01akqc"]
+
+[ext_resource type="Script" uid="uid://bxo36l23daoej" path="res://addons/Feedbacks/feedback.gd" id="1_43xx2"]
+
+[sub_resource type="Gradient" id="Gradient_t3sa5"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6bjst"]
+gradient = SubResource("Gradient_t3sa5")
+
+[sub_resource type="Curve" id="Curve_nbj77"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 65.47321, 0, 1, Vector2(0.7801609, 12.837837), 0.0, 0.0, 0, 0, Vector2(1, 100), 396.48163, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bsce1"]
+curve = SubResource("Curve_nbj77")
+
+[sub_resource type="Curve" id="Curve_ax7o5"]
+_data = [Vector2(0.008042898, 0.9932432), 0.0, 0.0, 0, 0, Vector2(0.3941019, 0.5945946), 1.9802122, 1.9802122, 0, 0, Vector2(0.5630027, 0.7432432), 0.0, 0.0, 0, 0, Vector2(0.98123324, 0.07432425), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ax7o5"]
+curve = SubResource("Curve_ax7o5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8kg6k"]
+lifetime_randomness = 0.33
+particle_flag_disable_z = true
+spread = 180.0
+flatness = 0.51
+initial_velocity_min = 15.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, 0, 0)
+damping_min = 10.0
+damping_max = 10.0
+damping_curve = SubResource("CurveTexture_bsce1")
+scale_curve = SubResource("CurveTexture_ax7o5")
+color_ramp = SubResource("GradientTexture1D_6bjst")
+
+[node name="Feedback" type="Node2D" unique_id=90886113 node_paths=PackedStringArray("particle", "sound")]
+script = ExtResource("1_43xx2")
+particle = [NodePath("VFX")]
+sound = [NodePath("SFX")]
+metadata/_custom_type_script = "uid://bxo36l23daoej"
+
+[node name="VFX" type="GPUParticles2D" parent="." unique_id=1005501919]
+emitting = false
+amount = 50
+lifetime = 0.2
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_8kg6k")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=987224556]
+
+[node name="LifeTime" type="Timer" parent="." unique_id=610609886]
+one_shot = true
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

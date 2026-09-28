@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://myj2epr5p8y5"]
+
+[ext_resource type="PackedScene" uid="uid://d3okgdyv1iesq" path="res://scenes/mobs/mob_base.tscn" id="1_joett"]
+[ext_resource type="Script" uid="uid://drb0n1gwjfqf4" path="res://resources/scripts/mobs/shooter.gd" id="2_qk3t0"]
+[ext_resource type="Texture2D" uid="uid://buqydxci8o5wr" path="res://resources/sprites/mobs/Set_Mobs.png" id="2_vgx5q"]
+
+[node name="MobShooter" unique_id=2027716672 instance=ExtResource("1_joett")]
+script = ExtResource("2_qk3t0")
+projectile_key = "base"
+shoot_delay = 1.0
+target_player = true
+health = 1
+move_speed = 0.0
+
+[node name="Sprite2D" parent="." index="0" unique_id=594589554]
+texture = ExtResource("2_vgx5q")
+hframes = 10
+vframes = 10
+frame = 1
+
+[node name="Container" parent="." index="2" unique_id=429502308]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="ShootTimer" type="Timer" parent="." index="3" unique_id=621677968]
+one_shot = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

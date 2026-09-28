@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://figji2osh4yp"]
+
+[ext_resource type="Script" uid="uid://ckxbp1c2cry0v" path="res://addons/Feedbacks/feedback_pools_logic.gd" id="1_hc84o"]
+
+[node name="FeedbackLogic" type="Node2D" unique_id=1470928795]
+script = ExtResource("1_hc84o")
+metadata/_custom_type_script = "uid://ckxbp1c2cry0v"

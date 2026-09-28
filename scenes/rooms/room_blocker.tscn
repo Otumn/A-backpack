@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://b6l1lmiy2wqa3"]
+
+[ext_resource type="Script" uid="uid://caufw0277efc4" path="res://resources/scripts/rooms/room_blocker.gd" id="1_ubve5"]
+[ext_resource type="Texture2D" uid="uid://bomgf0v3jwfda" path="res://resources/sprites/enviros/Set_BaseRoom.png" id="2_7o6ir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ui8po"]
+size = Vector2(128, 96)
+
+[node name="RoomBlocker" type="Node2D" unique_id=1539743773]
+script = ExtResource("1_ubve5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=614793021]
+texture_filter = 1
+position = Vector2(-16, -16)
+texture = ExtResource("2_7o6ir")
+hframes = 6
+vframes = 5
+frame = 6
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1984598149]
+texture_filter = 1
+position = Vector2(16, -16)
+texture = ExtResource("2_7o6ir")
+hframes = 6
+vframes = 5
+frame = 6
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=315644328]
+texture_filter = 1
+position = Vector2(-16, -48)
+texture = ExtResource("2_7o6ir")
+hframes = 6
+vframes = 5
+frame = 12
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1203166293]
+texture_filter = 1
+position = Vector2(16, -48)
+texture = ExtResource("2_7o6ir")
+hframes = 6
+vframes = 5
+frame = 12
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1816699377]
+texture_filter = 1
+position = Vector2(-16, -80)
+texture = ExtResource("2_7o6ir")
+hframes = 6
+vframes = 5
+frame = 12
+
+[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=318825229]
+texture_filter = 1
+position = Vector2(-48, -16)
+texture = ExtResource("2_7o6ir")
+hframes = 6
+vframes = 5
+frame = 6
+
+[node name="Sprite2D8" type="Sprite2D" parent="." unique_id=1492621857]
+texture_filter = 1
+position = Vector2(-48, -48)
+texture = ExtResource("2_7o6ir")
+hframes = 6
+vframes = 5
+frame = 12
+
+[node name="Sprite2D9" type="Sprite2D" parent="." unique_id=1675735751]
+texture_filter = 1
+position = Vector2(-48, -80)
+texture = ExtResource("2_7o6ir")
+hframes = 6
+vframes = 5
+frame = 12
+
+[node name="Sprite2D10" type="Sprite2D" parent="." unique_id=72580899]
+texture_filter = 1
+position = Vector2(48, -16)
+texture = ExtResource("2_7o6ir")
+hframes = 6
+vframes = 5
+frame = 6
+
+[node name="Sprite2D11" type="Sprite2D" parent="." unique_id=1224320733]
+texture_filter = 1
+position = Vector2(48, -48)
+texture = ExtResource("2_7o6ir")
+hframes = 6
+vframes = 5
+frame = 12
+
+[node name="Sprite2D12" type="Sprite2D" parent="." unique_id=1310666653]
+texture_filter = 1
+position = Vector2(48, -80)
+texture = ExtResource("2_7o6ir")
+hframes = 6
+vframes = 5
+frame = 12
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=270680690]
+texture_filter = 1
+position = Vector2(16, -80)
+texture = ExtResource("2_7o6ir")
+hframes = 6
+vframes = 5
+frame = 12
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1803566111]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=302515403]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_ui8po")
+debug_color = Color(0, 0.5950001, 0.7, 0)

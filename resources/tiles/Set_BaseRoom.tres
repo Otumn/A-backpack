@@ -1,0 +1,37 @@
+[gd_resource type="TileSet" format=3 uid="uid://dymbevegapntb"]
+
+[ext_resource type="Texture2D" uid="uid://bomgf0v3jwfda" path="res://resources/sprites/enviros/Set_BaseRoom.png" id="1_wtok4"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_wtok4"]
+tile_data = PackedInt32Array(0, 131072, 805306369, 65536, 131072, 1342177281, 1, 131072, 1610612737, 65537, 131072, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mi7ua"]
+texture = ExtResource("1_wtok4")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_mi7ua")
+pattern_0 = SubResource("TileMapPattern_wtok4")

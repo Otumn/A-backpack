@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dxrsuu6hq0blu"]
+
+[ext_resource type="Texture2D" uid="uid://bomgf0v3jwfda" path="res://resources/sprites/enviros/Set_BaseRoom.png" id="1_c4tr1"]
+[ext_resource type="Script" uid="uid://bq2mpp267bawp" path="res://resources/scripts/rooms/room_locker.gd" id="1_vpej0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ui8po"]
+size = Vector2(64, 4)
+
+[node name="RoomLock" type="Node2D" unique_id=2130150575]
+script = ExtResource("1_vpej0")
+metadata/_custom_type_script = "uid://bq2mpp267bawp"
+
+[node name="Sprite_left" type="Sprite2D" parent="." unique_id=41806852]
+texture_filter = 1
+position = Vector2(-16, 0)
+texture = ExtResource("1_c4tr1")
+hframes = 6
+vframes = 5
+frame = 18
+
+[node name="Sprite_right" type="Sprite2D" parent="." unique_id=2090219256]
+texture_filter = 1
+position = Vector2(16, 0)
+texture = ExtResource("1_c4tr1")
+hframes = 6
+vframes = 5
+frame = 18
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1399939898]
+visible = false
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1455682945]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ui8po")

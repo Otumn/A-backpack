@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://d3okgdyv1iesq"]
+
+[ext_resource type="Script" uid="uid://b5115rwv41eu8" path="res://resources/scripts/mobs/mob.gd" id="1_6ygvw"]
+[ext_resource type="Texture2D" uid="uid://dbs161mmbvx1u" path="res://resources/sprites/mobs/PH_Mob.png" id="2_gj5cv"]
+[ext_resource type="Texture2D" uid="uid://bt5parkrm5wui" path="res://resources/sprites/UI/UI_HealthBarSlot.png" id="4_jdq1s"]
+[ext_resource type="Texture2D" uid="uid://cpghi1mb16bcb" path="res://resources/sprites/UI/UI_HealthBar.png" id="5_jditu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ui8po"]
+radius = 11.0
+height = 28.0
+
+[node name="MobBase" type="CharacterBody2D" unique_id=2027716672 node_paths=PackedStringArray("sprite", "body_coll", "health_bar") groups=["Mobs"]]
+z_index = 7
+collision_layer = 4
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_6ygvw")
+sprite = NodePath("Sprite2D")
+body_coll = NodePath("BodyCollision")
+health_bar = NodePath("Container/HealthBar")
+metadata/_custom_type_script = "uid://b5115rwv41eu8"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=594589554]
+texture_filter = 1
+texture = ExtResource("2_gj5cv")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1015924941]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_ui8po")
+debug_color = Color(0.73875135, 0.39070228, 0.4080153, 0.41960785)
+
+[node name="Container" type="Control" parent="." unique_id=429502308]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -20.0
+offset_top = -19.0
+offset_right = 20.0
+offset_bottom = 21.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="Container" unique_id=364230261]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -4.0
+offset_right = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+step = 0.01
+value = 1.0
+texture_under = ExtResource("4_jdq1s")
+texture_progress = ExtResource("5_jditu")

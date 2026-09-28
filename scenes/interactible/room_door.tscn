@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bqinmja8udim0"]
+
+[ext_resource type="Texture2D" uid="uid://csg4fphsdqe8x" path="res://resources/sprites/props/Set_RoomDoors.png" id="2_7abiv"]
+[ext_resource type="Script" uid="uid://ddyhnm2tu7720" path="res://resources/scripts/interactible/room_door.gd" id="2_ssnjk"]
+[ext_resource type="Texture2D" uid="uid://blo6mve7lvaec" path="res://resources/sprites/UI/UI_Interaction.png" id="3_ssnjk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7abiv"]
+size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssnjk"]
+size = Vector2(64, 32)
+
+[node name="RoomDoors" type="Area2D" unique_id=1992416722 node_paths=PackedStringArray("sprite")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("2_ssnjk")
+sprite = NodePath("Sprite2D")
+auto_disable_on_interact = false
+metadata/_custom_type_script = "uid://b0jinw0b41n0u"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1593642389]
+texture_filter = 1
+texture = ExtResource("2_7abiv")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1421659993]
+shape = SubResource("RectangleShape2D_7abiv")
+
+[node name="Container" type="Control" parent="." unique_id=1318122534]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Container" unique_id=596556470]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_ssnjk")
+
+[node name="Collider" type="StaticBody2D" parent="." unique_id=799472211]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider" unique_id=1829727116]
+shape = SubResource("RectangleShape2D_ssnjk")
+debug_color = Color(0.4273544, 0.6025407, 5.7756904e-07, 0.41960785)

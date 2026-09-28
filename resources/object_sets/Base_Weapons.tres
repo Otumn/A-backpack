@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WeaponSet" format=3 uid="uid://c317nf05ugfe2"]
+
+[ext_resource type="Script" uid="uid://bfwl4hfirljls" path="res://resources/scripts/resources/Weapon_Set.gd" id="1_tg3ye"]
+
+[resource]
+script = ExtResource("1_tg3ye")
+collection = Array[String](["res://scenes/weapons/weapon_white_dagger.tscn", "res://scenes/weapons/weapon_white_katana.tscn", "res://scenes/weapons/weapon_white_rapier.tscn", "res://scenes/weapons/weapon_white_spear.tscn", "res://scenes/weapons/weapon_white_sword.tscn"])
+metadata/_custom_type_script = "uid://bfwl4hfirljls"

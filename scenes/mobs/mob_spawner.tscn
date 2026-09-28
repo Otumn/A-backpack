@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c75ei1pe2lp0j"]
+
+[ext_resource type="Script" uid="uid://d221ympbmk7dv" path="res://resources/scripts/mobs/mob_spawner.gd" id="1_lnnj0"]
+[ext_resource type="Texture2D" uid="uid://dlpk6bln2g65c" path="res://resources/sprites/editor/ED_MobSpawn.png" id="2_ieia3"]
+[ext_resource type="Script" uid="uid://cj5icmkpy1r7q" path="res://resources/scripts/mobs/mob_spawner_gizmos.gd" id="3_ieia3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ui8po"]
+font_size = 8
+
+[node name="MobSpawner" type="Node2D" unique_id=243945656 node_paths=PackedStringArray("label")]
+script = ExtResource("1_lnnj0")
+label = NodePath("Label")
+metadata/_custom_type_script = "uid://d221ympbmk7dv"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1810866318]
+texture_filter = 1
+position = Vector2(0, -3)
+texture = ExtResource("2_ieia3")
+
+[node name="Label" type="Label" parent="." unique_id=905401226]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = 6.0
+offset_right = 16.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "*2;0.25s"
+label_settings = SubResource("LabelSettings_ui8po")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1600430372]
+one_shot = true
+
+[node name="DelayTimer" type="Timer" parent="." unique_id=1307609055]
+one_shot = true
+
+[node name="MobSpawnerGizmos" type="Node2D" parent="." unique_id=984228792 node_paths=PackedStringArray("target")]
+script = ExtResource("3_ieia3")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://cj5icmkpy1r7q"
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]

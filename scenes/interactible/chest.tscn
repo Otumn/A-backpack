@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ddbvk5vmncsty"]
+
+[ext_resource type="PackedScene" uid="uid://vjfp15yax0nd" path="res://scenes/interactible/interactible.tscn" id="1_0j4y2"]
+[ext_resource type="Script" uid="uid://cnse5bithl0mp" path="res://resources/scripts/interactible/chest.gd" id="2_ki4i1"]
+
+[node name="Chest" unique_id=1992416722 instance=ExtResource("1_0j4y2")]
+script = ExtResource("2_ki4i1")
+amount = 3
+weapon_collection = null
+spawn_range = 25.0

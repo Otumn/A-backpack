@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://58q7d08agvw7"]
+
+[ext_resource type="Script" uid="uid://ix08gnpu147r" path="res://resources/scripts/weapons/weapon.gd" id="1_iebta"]
+[ext_resource type="Texture2D" uid="uid://ddpknmysrls6t" path="res://resources/sprites/weapons/Set_BaseWeapons.png" id="2_c6otm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ui8po"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ui8po"]
+radius = 150.0
+
+[node name="WeaponBase" type="Area2D" unique_id=858050485 node_paths=PackedStringArray("sprite", "coll", "attack_CD_timer")]
+collision_layer = 0
+collision_mask = 4
+input_pickable = false
+monitorable = false
+script = ExtResource("1_iebta")
+sprite = NodePath("Sprite2D")
+coll = NodePath("Hitbox")
+attack_CD_timer = NodePath("AttackCooldown")
+speed_idle = 100.0
+speed_combat = 100.0
+attack_range = 20.0
+metadata/_custom_type_script = "uid://ix08gnpu147r"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1682521592]
+texture_filter = 1
+texture = ExtResource("2_c6otm")
+hframes = 10
+vframes = 10
+frame = 4
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1266121812]
+shape = SubResource("CapsuleShape2D_ui8po")
+disabled = true
+debug_color = Color(1.8770993e-06, 0.64887625, 0.1764119, 0.41960785)
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1585930597]
+one_shot = true
+
+[node name="TargetDetector" type="Area2D" parent="." unique_id=802930483]
+collision_layer = 0
+collision_mask = 4
+
+[node name="DetectorRange" type="CollisionShape2D" parent="TargetDetector" unique_id=532509150]
+shape = SubResource("CircleShape2D_ui8po")
+debug_color = Color(0, 0.88, 0.45466664, 0.105882354)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="TargetDetector" to="." method="_on_target_detector_body_entered"]
+[connection signal="body_exited" from="TargetDetector" to="." method="_on_target_detector_body_exited"]

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://o7p555xb2pcm"]
+
+[ext_resource type="Texture2D" uid="uid://dd41erfoqr6sb" path="res://resources/sprites/Icon_Backpack.png" id="1_or508"]
+[ext_resource type="Script" uid="uid://fio2pax78na5" path="res://resources/scripts/player_backpack.gd" id="1_v6atb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ui8po"]
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xlqa3"]
+height = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ui8po"]
+radius = 28.0
+
+[node name="Backpack" type="CharacterBody2D" unique_id=1985265583]
+collision_layer = 2
+collision_mask = 17
+motion_mode = 1
+script = ExtResource("1_v6atb")
+max_weapons = null
+weapons_distance = null
+walk_speed = 100.0
+health = 16
+forced_velocity_decay = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=478720934]
+texture_filter = 1
+texture = ExtResource("1_or508")
+centered = false
+offset = Vector2(-16, -32)
+
+[node name="BodyColl" type="CollisionShape2D" parent="." unique_id=1200474094]
+position = Vector2(0, -13)
+rotation = 3.1415927
+shape = SubResource("CapsuleShape2D_ui8po")
+
+[node name="WeaponCenter" type="Marker2D" parent="." unique_id=153829288]
+position = Vector2(0, -10)
+
+[node name="DamagesArea" type="Area2D" parent="." unique_id=169167408]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="Hitbox" type="CollisionShape2D" parent="DamagesArea" unique_id=360695413]
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_xlqa3")
+debug_color = Color(2.1658838e-07, 0.27336222, 0.32447693, 0.41960785)
+
+[node name="InteractibleArea" type="Area2D" parent="." unique_id=532803467]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractibleArea" unique_id=1664341365]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_ui8po")
+debug_color = Color(0.6395341, 0.52551633, 0, 0.41960785)
+
+[connection signal="body_entered" from="DamagesArea" to="." method="_on_damages_area_body_entered"]
+[connection signal="area_entered" from="InteractibleArea" to="." method="_on_interactible_area_area_entered"]
+[connection signal="area_exited" from="InteractibleArea" to="." method="_on_interactible_area_area_exited"]
