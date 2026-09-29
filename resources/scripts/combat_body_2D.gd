@@ -13,7 +13,7 @@ signal died
 
 @export_group("Combat")
 @export var health: int = 5
-##The higher the value, the more the character will get back controls of its body after being hit
+##The lower the value, the more the character will get back controls of its body after being hit
 @export var stun_resistance: float = 1.0
 
 @export_group("Velocity")
@@ -127,7 +127,7 @@ func on_attacked(source:Node2D , attack:AttackProfile):
 	
 	is_stunned = true
 	stunned_time = attack.stun_time * stun_resistance
-	push_combat_body_2D(attack.force, global_position - source.global_position)
+	push_combat_body_2D(attack.get_force(true), global_position - source.global_position)
 
 func on_death():
 	died.emit()
@@ -137,7 +137,7 @@ func on_healed():
 	pass
 
 func push_combat_body_2D(force: float, direction: Vector2):
-	forced_velocity += direction.normalized() * force
+	forced_velocity += direction.normalized() * force * 10
 	is_counting_decay_time = true
 	forced_vel_decay_time = 0.0
 	

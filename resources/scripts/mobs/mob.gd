@@ -13,9 +13,11 @@ signal death
 @export var health_bar:TextureProgressBar
 
 @export_group("Stats")
+@export var attack_profile:AttackProfile = preload("res://resources/attack_profiles/BaseProfile.tres")
 @export var health:int = 2
 @export var move_speed:float = 50.0
-@export var attack_profile:AttackProfile = preload("res://resources/attack_profiles/BaseProfile.tres")
+# the lower the resistance, the more the mob will resist getting pushed
+@export var stun_resistance:float = 1.0
 
 var current_health:int = 0
 var move_dir:Vector2 = Vector2.ZERO
@@ -43,7 +45,7 @@ func _physics_process(_delta: float) -> void:
 
 func on_attacked(source:Node2D, attack:AttackProfile):
 	hit(attack.damage)
-	push((global_position - source.global_position), attack.force * 0.1)
+	push((global_position - source.global_position), attack.get_force(), attack.stun_time * stun_resistance)
 
 func hit(damage:int):
 	var old = current_health
