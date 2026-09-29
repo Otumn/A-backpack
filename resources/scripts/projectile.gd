@@ -25,6 +25,8 @@ enum ProjectileFaction {MOBS, PLAYER, NEUTRAL}
 @onready var coll:CollisionShape2D = $CollisionShape2D
 
 var available:bool = false
+#who fired this projectile?
+var launcher:Node2D
 
 func _physics_process(delta: float) -> void:
 	manage_movement(delta)
@@ -45,7 +47,8 @@ func setup_projectile():
 	available = true
 
 ##Set the projectile visible and starts movement
-func start_projectile(fac:ProjectileFaction, pos:Vector2, rot:float) -> void:
+func start_projectile(lau:Node2D, fac:ProjectileFaction, pos:Vector2, rot:float) -> void:
+	launcher = lau
 	sprite.visible = true
 	coll.disabled = false
 	
@@ -100,7 +103,7 @@ func set_hit_opposing_projectiles(toggle:bool):
 func treat_collision(target:Node2D):
 	#did a whole function for maybe one single thing but it might be useful later we don't know
 	if target.has_method("on_attacked"):
-		target.on_attacked(self, attack_profile)
+		target.on_attacked(launcher, attack_profile)
 	call_deferred("end_projectile")
 
 func _on_body_entered(body: Node2D) -> void:

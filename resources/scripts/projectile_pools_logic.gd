@@ -21,12 +21,12 @@ func setup_all_pools():
 		pools_refs[pp] = pool
 		#index += 1
 
-func fire_projectile(key:String, faction:Projectile.ProjectileFaction, pos:Vector2, rot:float) -> Projectile:
+func fire_projectile(launcher:Node2D, key:String, faction:Projectile.ProjectileFaction, pos:Vector2, rot:float) -> Projectile:
 	if pools_refs.has(key) == false: return
 	
 	for p in pools_refs[key].get_children():
 		p = (p as Projectile)
 		if p.available:
-			p.start_projectile(faction, pos, rot)
+			p.start_projectile(launcher, faction, pos, rot)
 			return p
 	return null

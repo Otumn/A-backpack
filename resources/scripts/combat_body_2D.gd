@@ -15,6 +15,7 @@ signal died
 @export var health: int = 5
 ##The lower the value, the more the character will get back controls of its body after being hit
 @export var stun_resistance: float = 1.0
+@export var push_center_offset:float = -10.0
 
 @export_group("Velocity")
 @export var max_input_velocity: float = 300.0
@@ -127,7 +128,7 @@ func on_attacked(source:Node2D , attack:AttackProfile):
 	
 	is_stunned = true
 	stunned_time = attack.stun_time * stun_resistance
-	push_combat_body_2D(attack.get_force(true), global_position - source.global_position)
+	push_combat_body_2D(attack.get_force(true), (global_position + Vector2(0, push_center_offset)) - source.global_position)
 
 func on_death():
 	died.emit()
