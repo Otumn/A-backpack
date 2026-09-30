@@ -70,3 +70,4 @@ func load_floor(params:FloorParams):
 			var door:RoomDoor = params.room_doors.instantiate()
 			room_parent.add_child(door)
 			door.global_position = Vector2(y * room_size.x,(room_size.y * 0.5) + x * room_size.y)
+	HUD.display_in_game_HUD(true)

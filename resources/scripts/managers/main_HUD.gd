@@ -7,10 +7,17 @@ signal weapon_frame_changed(old_value:int, new_value:int)
 @export_range(1, 100, 1) var hp_sprite_pool:int = 20
 @export_range(1, 100, 1) var weapon_frame_sprite_pool:int = 8
 
+@onready var in_game_cont:Control = $InGameContainer
 @onready var hp:TextureRect = $InGameContainer/HealthContainer/HP
 @onready var weapon_frame:WeaponFrame = $InGameContainer/WeaponsContainer/WeaponFrame
 @onready var coins_label:Label = $InGameContainer/LabelContainer/CoinsLabel
 @onready var value_label:Label = $InGameContainer/LabelContainer/ValueLabel
+
+@onready var game_over_cont:Control = $GameOverContainer
+
+@onready var pause_cont:Control = $PauseContainer
+
+@onready var options_cont:Control = $OptionsContainer
 
 var hps:Array[TextureRect] = []
 var current_hp:int = 5
@@ -26,6 +33,9 @@ func _ready() -> void:
 	GeneralManager.connect("value_added", _on_value_added)
 
 #region IN GAME HUD
+func display_in_game_HUD(toggle:bool):
+	in_game_cont.visible = toggle
+
 func setup_pools():
 	var parent = hp.get_parent()
 	for i in hp_sprite_pool - 1:
@@ -73,16 +83,31 @@ func add_weapon(sprite:Sprite2D):
 	next_weapon_index -= 1
 #endregion
 
+#region PAUSE MENU
+func display_pause_menu(toggle:bool):
+	pause_cont.visible = toggle
+#endregion
+
+#region OPTIONS MENU
+func display_option_menu(toggle:bool):
+	options_cont.visible = toggle
+#endregion
+
 #region GAME OVER
-func display_game_over():
-	$GameOverContainer.visible = true
+func display_game_over(toggle:bool):
+	game_over_cont.visible = toggle
 
 func _on_go_button_pressed() -> void:
 	Global2dCamera.is_setup = false
 	get_tree().reload_current_scene()
-	$GameOverContainer.visible = false
+	display_game_over(false)
 #endregion
 
+#region INTERNAL EVENTS
+
+#endregion
+
+#region EXTERNAL EVENTS
 func _on_coins_set(_old:int, new:int):
 	coins_label.text = "Coins : " + str(new)
 
@@ -94,3 +119,4 @@ func _on_value_set(_old:int, new:int):
 
 func _on_value_added(_old:int, new:int):
 	value_label.text = "Value : " + str(new)
+#endregion

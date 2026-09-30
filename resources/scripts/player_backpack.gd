@@ -23,8 +23,6 @@ func _ready() -> void:
 	HUD.set_weapon_frames(max_weapons)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_up"): ProjectilePools.fire_projectile("explosion", Projectile.ProjectileFaction.PLAYER, global_position, 0)
-	
 	manage_inputs()
 	manage_weapons_position()
 	
@@ -146,7 +144,7 @@ func on_attacked(source:Node2D , attack:AttackProfile):
 	HUD.set_hp(current_health)
 
 func on_death():
-	HUD.display_game_over()
+	HUD.display_game_over(true)
 	super.on_death()
 
 func _on_damages_area_body_entered(body: Node2D) -> void: #can't remember why exactly that detection is done here, but I'm pretty sure I had a good reason
