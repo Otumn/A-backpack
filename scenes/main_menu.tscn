@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bjp8b76cbgjo1"]
 
 [ext_resource type="Theme" uid="uid://bbmgfth4eqy1e" path="res://resources/themes/BaseMenuTheme.tres" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://dvmtwv1s8qf7v" path="res://resources/scripts/UIs/main_menu.gd" id="1_ekxnf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ui8po"]
 line_spacing = 0.0
@@ -10,6 +11,7 @@ font_size = 8
 font_size = 50
 
 [node name="MainMenu" type="CanvasLayer" unique_id=125867251]
+script = ExtResource("1_ekxnf")
 
 [node name="Control" type="Control" parent="." unique_id=1787613716]
 layout_mode = 3
@@ -82,3 +84,6 @@ text = "Options"
 [node name="Btn_Quit" type="Button" parent="Control/VBoxContainer" unique_id=1337784430]
 layout_mode = 2
 text = "Quit"
+
+[connection signal="pressed" from="Control/VBoxContainer/Btn_Play" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Btn_Options" to="." method="_on_btn_options_pressed"]

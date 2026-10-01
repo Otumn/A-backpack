@@ -19,6 +19,7 @@ signal weapon_frame_changed(old_value:int, new_value:int)
 
 @onready var options_cont:Control = $OptionsContainer
 
+var displayed_menus:Array[String] = []
 var hps:Array[TextureRect] = []
 var current_hp:int = 5
 var wpfs:Array[WeaponFrame] = []
@@ -35,6 +36,7 @@ func _ready() -> void:
 #region IN GAME HUD
 func display_in_game_HUD(toggle:bool):
 	in_game_cont.visible = toggle
+	update_displayed_menu("in_game_HUD")
 
 func setup_pools():
 	var parent = hp.get_parent()
@@ -81,16 +83,37 @@ func set_weapon_frames(value:int):
 func add_weapon(sprite:Sprite2D):
 	wpfs[next_weapon_index].set_icon_texture(sprite)
 	next_weapon_index -= 1
+
+func _on_ig_pause_pressed() -> void:
+	display_pause_menu(true)
 #endregion
 
 #region PAUSE MENU
 func display_pause_menu(toggle:bool):
+	if displayed_menus.has("options_menu"): return
 	pause_cont.visible = toggle
+	get_tree().paused = toggle
+	update_displayed_menu("pause_menu")
+
+func _on_p_return_pressed() -> void:
+	display_pause_menu(false)
+
+func _on_p_options_pressed() -> void:
+	display_options_menu(true)
+
+func _on_p_menu_pressed() -> void:
+	display_pause_menu(false)
+	Global2dCamera.is_setup = false
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 #endregion
 
 #region OPTIONS MENU
-func display_option_menu(toggle:bool):
+func display_options_menu(toggle:bool):
 	options_cont.visible = toggle
+	update_displayed_menu("options_menu")
+
+func _on_opt_return_pressed() -> void:
+	display_options_menu(false)
 #endregion
 
 #region GAME OVER
@@ -102,6 +125,12 @@ func _on_go_button_pressed() -> void:
 	get_tree().reload_current_scene()
 	display_game_over(false)
 #endregion
+
+func update_displayed_menu(key:String):
+	if displayed_menus.has(key):
+		displayed_menus.erase(key)
+	else:
+		displayed_menus.append(key)
 
 #region INTERNAL EVENTS
 

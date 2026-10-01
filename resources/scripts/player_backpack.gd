@@ -18,7 +18,6 @@ var registered_interactible: Array[Interactible]
 
 #region 
 func _ready() -> void:
-	GeneralManager.player = self
 	HUD.set_hp(current_health)
 	HUD.set_weapon_frames(max_weapons)
 

@@ -5,11 +5,26 @@
 [ext_resource type="Theme" uid="uid://js58e2t6bkwv" path="res://resources/themes/InGameMenuTheme.tres" id="2_tlvka"]
 [ext_resource type="Texture2D" uid="uid://btppb6h2bh5xv" path="res://resources/sprites/UI/UI_WeaponFrame.png" id="3_ttlsy"]
 [ext_resource type="Script" uid="uid://due4lkrys6cw0" path="res://resources/scripts/UIs/weapon_frame.gd" id="4_xhf07"]
+[ext_resource type="Texture2D" uid="uid://behlyb75wy7l4" path="res://resources/sprites/UI/UI_Icon_Pause.png" id="6_751jb"]
+[ext_resource type="Texture2D" uid="uid://b0u15q45lhhp0" path="res://resources/sprites/UI/UI_WindowBackground.png" id="6_nfprj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ui8po"]
 font_size = 12
 
+[sub_resource type="InputEventAction" id="InputEventAction_pgeko"]
+action = &"pause"
+
+[sub_resource type="Shortcut" id="Shortcut_kagru"]
+events = [SubResource("InputEventAction_pgeko")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_6uink"]
+action = &"pause"
+
+[sub_resource type="Shortcut" id="Shortcut_h71hk"]
+events = [SubResource("InputEventAction_6uink")]
+
 [node name="MainHUD" type="CanvasLayer" unique_id=1009840891]
+layer = 2
 script = ExtResource("1_ckv3j")
 
 [node name="PlaceholderBG" type="ColorRect" parent="." unique_id=614161016]
@@ -95,6 +110,18 @@ layout_mode = 2
 text = "Coins : 0"
 label_settings = SubResource("LabelSettings_ui8po")
 
+[node name="IG_Pause" type="Button" parent="InGameContainer" unique_id=619469246]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+shortcut = SubResource("Shortcut_kagru")
+icon = ExtResource("6_751jb")
+
 [node name="GameOverContainer" type="Control" parent="." unique_id=105969496]
 visible = false
 layout_mode = 3
@@ -141,6 +168,7 @@ size_flags_vertical = 4
 text = "RETRY"
 
 [node name="PauseContainer" type="Control" parent="." unique_id=1495093301]
+process_mode = 2
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -149,22 +177,61 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="PauseContainer" unique_id=457749417]
+[node name="P_Background" type="NinePatchRect" parent="PauseContainer" unique_id=461606013]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -77.0
+offset_top = -88.0
+offset_right = 77.0
+offset_bottom = 88.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_nfprj")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseContainer/P_Background" unique_id=47279093]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseContainer/P_Background/VBoxContainer" unique_id=1265888666]
+layout_mode = 2
 text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="P_Return" type="Button" parent="PauseContainer/P_Background/VBoxContainer" unique_id=1709049657]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_h71hk")
+text = "Resume"
+
+[node name="P_Options" type="Button" parent="PauseContainer/P_Background/VBoxContainer" unique_id=514443884]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Options"
+
+[node name="P_Menu" type="Button" parent="PauseContainer/P_Background/VBoxContainer" unique_id=1207913942]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Main menu"
 
 [node name="OptionsContainer" type="Control" parent="." unique_id=1752423341]
+process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -172,34 +239,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label2" type="Label" parent="OptionsContainer" unique_id=1595095914]
+[node name="OPT_Background" type="NinePatchRect" parent="OptionsContainer" unique_id=2088561786]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.5
-offset_top = -11.5
-offset_right = 25.5
-offset_bottom = 11.5
+offset_left = -312.0
+offset_top = -202.0
+offset_right = 312.0
+offset_bottom = 202.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_nfprj")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/OPT_Background" unique_id=237917350]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="OptionsContainer/OPT_Background/VBoxContainer" unique_id=1022747505]
+layout_mode = 2
 text = "OPTIONS"
 
-[node name="Button" type="Button" parent="OptionsContainer" unique_id=1922693201]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = 16.0
-offset_right = 31.0
-offset_bottom = 47.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Return"
+[node name="OPT_Return" type="Button" parent="OptionsContainer/OPT_Background/VBoxContainer" unique_id=2100662661]
+custom_maximum_size = Vector2(100, -1)
+layout_mode = 2
+text = "Return
+"
 
+[connection signal="pressed" from="InGameContainer/IG_Pause" to="." method="_on_ig_pause_pressed"]
 [connection signal="pressed" from="GameOverContainer/VBoxContainer/GO_Button" to="." method="_on_go_button_pressed"]
+[connection signal="pressed" from="PauseContainer/P_Background/VBoxContainer/P_Return" to="." method="_on_p_return_pressed"]
+[connection signal="pressed" from="PauseContainer/P_Background/VBoxContainer/P_Options" to="." method="_on_p_options_pressed"]
+[connection signal="pressed" from="PauseContainer/P_Background/VBoxContainer/P_Menu" to="." method="_on_p_menu_pressed"]
+[connection signal="pressed" from="OptionsContainer/OPT_Background/VBoxContainer/OPT_Return" to="." method="_on_opt_return_pressed"]

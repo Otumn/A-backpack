@@ -25,7 +25,7 @@ var pushed_time:float = 0.0
 var is_pushed:bool = false
 
 func _init() -> void:
-	current_health = health
+	current_health = get_scaled_health()
 
 func _ready() -> void:
 	pass
@@ -51,7 +51,7 @@ func hit(damage:int):
 	var old = current_health
 	current_health = maxi(current_health - damage, 0)
 	hurt.emit(old, current_health)
-	health_bar.value = inverse_lerp(0, health, current_health)
+	health_bar.value = inverse_lerp(0, get_scaled_health(), current_health)
 	#TODO : add feedback
 	if current_health == 0:
 		queue_free()
@@ -65,3 +65,6 @@ func push(dir: Vector2, force:float = 150.0, time: float = 0.1):
 
 func can_move() -> bool:
 	return not is_pushed
+
+func get_scaled_health() -> int:
+	return roundi(health * GeneralManager.run_data.difficulty)

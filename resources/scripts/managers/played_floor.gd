@@ -14,6 +14,8 @@ func _ready() -> void:
 	load_floor(p)
 
 func load_floor(params:FloorParams):
+	GeneralManager.load_run_data()
+	
 	for x in params.size_x:
 		for y in params.size_y:
 			var u = x + 1
@@ -24,7 +26,7 @@ func load_floor(params:FloorParams):
 			@warning_ignore("integer_division")
 			if u == (params.size_x + 1) / 2 && v == (params.size_y + 1) / 2:
 				room = preload("res://scenes/rooms/room_start.tscn").instantiate() # load the starting room
-				GeneralManager.spawn_player_bakcpack(room_parent, Vector2(x * room_size.x, y * room_size.y))
+				GeneralManager.spawn_player_bakcpack(room_parent, Vector2(x * room_size.x, y * room_size.y)) # this will eventually be replace by loading the correct player backpack state and its location from the run data
 			else:
 				var a = DirAccess.get_files_at(combat_room_dir)
 				room = load(combat_room_dir+a[randi()%a.size()]).instantiate() # load a normal room
@@ -55,7 +57,7 @@ func load_floor(params:FloorParams):
 					room.setup_room_geometry_as(Room.RoomGeometryType.RIGHT_SEGMENT)
 				else: #middle part
 					room.setup_room_geometry_as(Room.RoomGeometryType.MIDDLE)
-			
+				
 	#horizontal door spawn
 	for x in params.size_x: #row
 		for y in params.size_y - 1: #column

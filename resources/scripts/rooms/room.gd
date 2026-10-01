@@ -15,6 +15,7 @@ START_END}
 @export var start_room_on_playable_bounds = false
 
 @onready var cam_target:Global2DCameraTarget = $Global2DCameraTarget
+@onready var entities_parent:Node2D = $Entities
 
 @onready var lock_left:RoomLocker = $Tiles/RoomLock_left
 @onready var lock_right:RoomLocker = $Tiles/RoomLock_right
@@ -120,5 +121,5 @@ func _on_room_bounds_body_entered(_body: Node2D) -> void:
 	enter_room()
 
 func _on_playable_bounds_body_entered(_body: Node2D) -> void:
-	if start_room_on_playable_bounds && clearance_state != RoomClearanceState.CLEARED: start_room()
+	if start_room_on_playable_bounds && clearance_state == RoomClearanceState.TODO: start_room()
 #endregion
