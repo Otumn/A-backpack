@@ -5,7 +5,9 @@
 
 [resource]
 script = ExtResource("1_lvcgi")
-size_x = 3
-size_y = 3
 room_doors = ExtResource("1_6wt3h")
+possible_rooms_dirs = Dictionary[String, float]({
+"res://scenes/rooms/combat/easy/": 1.0,
+"res://scenes/rooms/exploration/": 0.2
+})
 metadata/_custom_type_script = "uid://bmxrq1r1m2qs"

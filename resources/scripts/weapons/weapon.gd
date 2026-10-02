@@ -16,7 +16,7 @@ extends Area2D
 #Not 100% sure about this method of balancing. My thought process is to say "If I need to increase/decrease all values accross the board I have a quick way to do it"
 const base_attack_cooldown: float = 2.0
 const base_move_speed: float = 150.0
-const base_attack_range: float = 2.5
+const base_attack_range: float = 40
 const base_detection_range: float = 150.0
 const base_attack_radius:float = 20.0
 const idle_distance_threshold: float = 5.0

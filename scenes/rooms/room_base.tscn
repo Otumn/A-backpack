@@ -18,7 +18,7 @@ script = ExtResource("1_ssqhp")
 
 [node name="Global2DCameraTarget" type="Node2D" parent="." unique_id=1497511916]
 script = ExtResource("2_ql374")
-zoom = Vector2(0.94, 0.94)
+zoom = Vector2(0.95, 0.95)
 metadata/_custom_type_script = "uid://br7kr3y3luqfq"
 
 [node name="Global2DCamTargetGizmos" type="Node2D" parent="Global2DCameraTarget" unique_id=1036854886 node_paths=PackedStringArray("target")]

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ObjectSet" format=3 uid="uid://cxhmlajt8fx7g"]
+
+[ext_resource type="Script" uid="uid://bfwl4hfirljls" path="res://resources/scripts/resources/object_set.gd" id="1_2nhnq"]
+
+[resource]
+script = ExtResource("1_2nhnq")
+collection = Array[String](["res://scenes/weapons/weapon_white_sword.tscn"])
+metadata/_custom_type_script = "uid://bfwl4hfirljls"

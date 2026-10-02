@@ -14,15 +14,20 @@ signal death
 
 @export_group("Stats")
 @export var attack_profile:AttackProfile = preload("res://resources/attack_profiles/BaseProfile.tres")
-@export var health:int = 2
-@export var move_speed:float = 50.0
+@export var health:int = 1
 # the lower the resistance, the more the mob will resist getting pushed
 @export var stun_resistance:float = 1.0
+@export var move_speed:float = 1
+
+const base_health:float = 10.0
+const base_stun_resistance:float = 1.0
+const base_move_speed:float = 50.0
 
 var current_health:int = 0
 var move_dir:Vector2 = Vector2.ZERO
 var pushed_time:float = 0.0
 var is_pushed:bool = false
+
 
 func _init() -> void:
 	current_health = get_scaled_health()
@@ -39,13 +44,13 @@ func _process(delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if can_move():  
 		move_dir = (GeneralManager.player.global_position - global_position).normalized()
-		velocity = move_dir * move_speed
+		velocity = move_dir * get_move_speed()
 		
 	move_and_slide()
 
 func on_attacked(source:Node2D, attack:AttackProfile):
 	hit(attack.damage)
-	push((global_position - source.global_position), attack.get_force(), attack.stun_time * stun_resistance)
+	push((global_position - source.global_position), attack.get_force(), attack.get_stun_time() * get_stun_resistance())
 
 func hit(damage:int):
 	var old = current_health
@@ -67,4 +72,13 @@ func can_move() -> bool:
 	return not is_pushed
 
 func get_scaled_health() -> int:
-	return roundi(health * GeneralManager.run_data.difficulty)
+	return roundi(get_health() * GeneralManager.run_data.difficulty)
+
+func get_health() -> int:
+	return roundi(base_health*health)
+
+func get_stun_resistance() -> float:
+	return base_stun_resistance * stun_resistance
+
+func get_move_speed() -> float:
+	return base_move_speed * move_speed

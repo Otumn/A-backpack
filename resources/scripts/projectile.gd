@@ -38,7 +38,7 @@ func manage_movement(delta:float):
 		sprite.rotation += sprite_rotation_speed * delta
 
 func setup_projectile():
-	sprite.visible = true
+	sprite.visible = false
 	coll.disabled = false
 	
 	set_process(false)

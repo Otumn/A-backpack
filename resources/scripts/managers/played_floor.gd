@@ -8,7 +8,6 @@ extends Node2D
 @onready var player_parent:Node2D = $PlayerParent
 
 const room_size:Vector2 = Vector2(1216.0, 704.0)
-const combat_room_dir:String = "res://scenes/rooms/combat/"
 
 func _ready() -> void:
 	load_floor(p)
@@ -25,8 +24,8 @@ func load_floor(params:FloorParams):
 			#Room spawn
 			@warning_ignore("integer_division")
 			if u == (params.size_x + 1) / 2 && v == (params.size_y + 1) / 2: # load the starting room
-				room = preload("res://scenes/rooms/room_start.tscn").instantiate() 
-				GeneralManager.spawn_player_bakcpack(room_parent, Vector2(x * room_size.x, y * room_size.y)) # this will eventually be replace by loading the correct player backpack state and its location from the run data
+				room = params.starting_room.instantiate() 
+				GeneralManager.spawn_player_bakcpack(player_parent, Vector2(x * room_size.x, y * room_size.y)) # this will eventually be replace by loading the correct player backpack state and its location from the run data
 			else: # load a normal random room depending on floor params
 				var dir: String = params.get_random_room_dir()
 				var a = DirAccess.get_files_at(dir)

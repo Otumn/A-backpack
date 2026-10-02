@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c75ei1pe2lp0j" path="res://scenes/mobs/mob_spawner.tscn" id="3_virag"]
 [ext_resource type="PackedScene" uid="uid://d3okgdyv1iesq" path="res://scenes/mobs/mob_base.tscn" id="4_ymawg"]
 
-[node name="RoomCbtEasy_00" unique_id=1980263812 instance=ExtResource("1_e4r55")]
+[node name="RoomCbtEasy_02" unique_id=1980263812 instance=ExtResource("1_e4r55")]
 script = ExtResource("2_nee51")
 activity_type = 1
 start_room_on_playable_bounds = true
@@ -18,12 +18,6 @@ spawn_interval = 2.0
 
 [node name="MobSpawner2" parent="Entities" parent_id_path=PackedInt32Array(155203376) index="1" unique_id=1433394488 instance=ExtResource("3_virag")]
 position = Vector2(-256, 128)
-mob = ExtResource("4_ymawg")
-spawn_amount = 1
-spawn_interval = 2.0
-
-[node name="MobSpawner3" parent="Entities" parent_id_path=PackedInt32Array(155203376) index="2" unique_id=665117994 instance=ExtResource("3_virag")]
-position = Vector2(256, 0)
 mob = ExtResource("4_ymawg")
 spawn_amount = 1
 spawn_interval = 2.0

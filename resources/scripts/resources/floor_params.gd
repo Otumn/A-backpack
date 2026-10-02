@@ -8,6 +8,7 @@ extends Resource
 @export var size_y:int = 5
 
 @export_group("Rooms")
+@export var starting_room:PackedScene = preload("res://scenes/rooms/start/room_start_00.tscn")
 @export var room_doors:PackedScene
 @export var possible_loot:bool = false # TBD
 ## Key = room scenes directory, value = directory selection probability. CANNOT BE EMPTY

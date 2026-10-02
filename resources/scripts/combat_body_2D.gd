@@ -127,7 +127,7 @@ func on_attacked(source:Node2D , attack:AttackProfile):
 		return
 	
 	is_stunned = true
-	stunned_time = attack.stun_time * stun_resistance
+	stunned_time = attack.get_stun_time() * stun_resistance
 	push_combat_body_2D(attack.get_force(true), (global_position + Vector2(0, push_center_offset)) - source.global_position)
 
 func on_death():

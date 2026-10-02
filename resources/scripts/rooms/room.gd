@@ -6,11 +6,11 @@ signal room_entered(room:Room, x:int, y:int)
 signal room_started(room:Room, x:int, y:int)
 signal room_cleared(room:Room, x:int, y:int)
 
-@export var coins_on_cleared:int = 2
-@export var activity_type:RoomActivityType = RoomActivityType.FREE
-enum RoomActivityType {FREE,
+@export var coins_on_cleared:int = 1
+@export var activity_type:RoomActivityType = RoomActivityType.EXPLORATION
+enum RoomActivityType {EXPLORATION,
 FIGHT, BOSSFIGHT,
-PUZZLE, STORE,
+STORE, PUZZLE,
 START_END}
 @export var start_room_on_playable_bounds = false
 
