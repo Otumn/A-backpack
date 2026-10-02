@@ -2,7 +2,7 @@ class_name DataRun
 extends SaveData
 
 ##All relevant values will be multiplied by this value (mob health, mob damage...)
-var difficulty:float = 5.0
+var difficulty:float = 1.0
 ##How deep are we in?
 var floor_depth:int = 1
 ##used to open doors and interact with enviro. TBD name

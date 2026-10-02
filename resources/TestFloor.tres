@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_lvcgi")
+size_x = 3
+size_y = 3
 room_doors = ExtResource("1_6wt3h")
-size_x = 7
-size_y = 7
 metadata/_custom_type_script = "uid://bmxrq1r1m2qs"

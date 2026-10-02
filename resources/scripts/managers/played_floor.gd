@@ -24,12 +24,13 @@ func load_floor(params:FloorParams):
 			
 			#Room spawn
 			@warning_ignore("integer_division")
-			if u == (params.size_x + 1) / 2 && v == (params.size_y + 1) / 2:
-				room = preload("res://scenes/rooms/room_start.tscn").instantiate() # load the starting room
+			if u == (params.size_x + 1) / 2 && v == (params.size_y + 1) / 2: # load the starting room
+				room = preload("res://scenes/rooms/room_start.tscn").instantiate() 
 				GeneralManager.spawn_player_bakcpack(room_parent, Vector2(x * room_size.x, y * room_size.y)) # this will eventually be replace by loading the correct player backpack state and its location from the run data
-			else:
-				var a = DirAccess.get_files_at(combat_room_dir)
-				room = load(combat_room_dir+a[randi()%a.size()]).instantiate() # load a normal room
+			else: # load a normal random room depending on floor params
+				var dir: String = params.get_random_room_dir()
+				var a = DirAccess.get_files_at(dir)
+				room = load(dir+a[randi()%a.size()]).instantiate()
 			
 			room.global_position = Vector2(x * room_size.x, y * room_size.y)
 			room_parent.add_child(room)
