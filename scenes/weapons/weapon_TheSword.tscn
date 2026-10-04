@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dckyv375psitl"]
+
+[ext_resource type="PackedScene" uid="uid://q1egccrwchbr" path="res://scenes/weapons/weapon_base.tscn" id="1_pksa3"]
+[ext_resource type="Script" uid="uid://cvo4we8n4aia2" path="res://resources/scripts/resources/attack_profile.gd" id="2_xxqln"]
+
+[sub_resource type="Resource" id="Resource_a4jos"]
+script = ExtResource("2_xxqln")
+damage = 5
+force = 0.25
+stun_time = 0.5
+metadata/_custom_type_script = "uid://cvo4we8n4aia2"
+
+[node name="TheSword" unique_id=858050485 instance=ExtResource("1_pksa3")]
+attack_profile = SubResource("Resource_a4jos")
+move_speed = 0.85
+attack_cooldown = 3.0
+attack_range = 1.0
+attack_radius = 1.0
+detection_range = 0.5
+
+[node name="Sprite2D" parent="." index="0" unique_id=1682521592]
+frame = 0

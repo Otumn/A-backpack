@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dby5e02g1dhlk"]
+
+[ext_resource type="PackedScene" uid="uid://q1egccrwchbr" path="res://scenes/weapons/weapon_base.tscn" id="1_8vwgd"]
+[ext_resource type="Resource" uid="uid://bafcgw0dqtd0i" path="res://resources/attack_profiles/BaseProfile.tres" id="2_8vwgd"]
+
+[node name="TheScepter" unique_id=858050485 instance=ExtResource("1_8vwgd")]
+weapon_type = false
+weapon_element = false
+weapon_fuel = false
+target_preference = false
+is_projectile_blocker = false
+projectile_key = "base"
+attack_profile = ExtResource("2_8vwgd")
+move_speed = 0.5
+attack_cooldown = 1.5
+attack_range = 1.0
+attack_radius = 0.0
+detection_range = 1.25
+
+[node name="Sprite2D" parent="." index="0" unique_id=1682521592]
+frame = 2

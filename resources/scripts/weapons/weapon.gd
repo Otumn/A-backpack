@@ -4,11 +4,26 @@ extends Area2D
 
 ##Moving object taking a weapon resources as its parameters
 
+signal hit_target(target:Node2D)
+signal attack_triggered()
+signal attack_ready()
+signal fired_projectile(projecile:Projectile)
+signal blocked_projectile()
+
+@export_group("Behaviour")
+@export var weapon_type:bool = false # TBD
+@export var weapon_element:bool = false # TBD
+@export var weapon_fuel:bool = false # TBD
+@export var target_preference:bool = false # TBD
+##Will enemy projectiles be blocked upon touching the weapon?
+@export var is_projectile_blocker:bool = false
+## If left empty the weapon will behave like a melee weapon
+@export var projectile_key:String = ""
 
 @export_group("Stats")
 @export var attack_profile:AttackProfile = preload("res://resources/attack_profiles/BaseProfile.tres")
-@export var attack_cooldown:float = 1.0
 @export var move_speed:float = 1.0
+@export var attack_cooldown:float = 1.0
 @export var attack_range:float = 1.0
 @export var attack_radius:float = 1.0
 @export var detection_range:float = 1.0
@@ -23,6 +38,7 @@ const idle_distance_threshold: float = 5.0
 
 @onready var sprite:Sprite2D = $Sprite2D
 @onready var hitbox:CollisionShape2D = $Hitbox
+@onready var projectiles_coll = $ProjectileBlocker/ProjecilesColl
 @onready var detector:CollisionShape2D = $TargetDetector/DetectorRange 
 @onready var attack_CD_timer: Timer = $AttackCooldown
 
@@ -42,6 +58,7 @@ func _ready() -> void:
 	attack_CD_timer.wait_time = get_attack_cooldown()
 	detector.shape.radius = get_detection_range()
 	hitbox.shape.radius = get_attack_radius()
+	projectiles_coll.shape.radius = get_attack_radius()
 
 func _physics_process(delta: float) -> void:
 	manage_position(delta)
@@ -51,6 +68,10 @@ func _physics_process(delta: float) -> void:
 func enable_weapon():
 	set_process(true)
 	set_physics_process(true)
+	
+	if is_projectile_blocker:
+		projectiles_coll.disabled = false
+	
 	enabled = true
 
 func disable_weapon():
@@ -63,7 +84,7 @@ func manage_position(delta:float):
 		attack_position = get_attack_position()
 		if global_position.distance_to(attack_position) > idle_distance_threshold:
 			global_position += (attack_position - global_position).normalized() * get_move_speed() * delta * (global_position.distance_to(attack_position) * 0.05)
-			if global_position.distance_to(attack_position) <= idle_distance_threshold + 5.0 && not is_attacking:
+			if ((global_position.distance_to(attack_position) <= idle_distance_threshold + 5.0) or projectile_key != "") && not is_attacking:
 				attack()
 	else:
 		if global_position.distance_to(idle_position) > idle_distance_threshold:
@@ -71,20 +92,32 @@ func manage_position(delta:float):
 
 ##Gets the position to which the weapon will go when it has a target. Base behaviour is going next to the target
 func get_attack_position() -> Vector2:
-	return current_target.global_position + attack_offset * get_attack_range()
+	if projectile_key == "":
+		return current_target.global_position + attack_offset * get_attack_range()
+	else:
+		return idle_position
 #endregion
 
 #region FIGHT FUNCTIONS
 ##Defines one iteration of an attack. Base behaviour is melee attack
 func attack():
-	is_attacking = true
-	hitbox.disabled = false
-	var t = create_tween().set_trans(Tween.TRANS_SINE)
-	t.tween_property(self, "global_position", current_target.global_position, 0.1)
-	t.tween_property(self, "global_position", attack_position, 0.1)
-	await t.finished
-	hitbox.disabled = true
-	attack_CD_timer.start()
+	attack_triggered.emit()
+	if projectile_key == "": 
+		is_attacking = true
+		hitbox.disabled = false
+		var t = create_tween().set_trans(Tween.TRANS_SINE)
+		t.tween_property(self, "global_position", current_target.global_position, 0.1)
+		t.tween_property(self, "global_position", attack_position, 0.1)
+		await t.finished
+		hitbox.disabled = true
+		attack_CD_timer.start()
+	else:
+		is_attacking = true
+		
+		var p = ProjectilePools.fire_projectile(self, projectile_key, Projectile.ProjectileFaction.PLAYER, global_position, self.get_angle_to(current_target.global_position) + PI*0.5)
+		fired_projectile.emit(p)
+		
+		attack_CD_timer.start()
 
 func target(mob:Mob):
 	if mob.is_queued_for_deletion(): 
@@ -135,14 +168,25 @@ func _on_target_detector_body_exited(body: Node2D) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if !enabled: return
 	
-	body = body as Mob
-	body.on_attacked(self, attack_profile)
+	if (body as Mob):
+		body.on_attacked(self, attack_profile)
+		hit_target.emit(body)
+
+
+#Projectile blocker call
+func _on_projectile_blocker_area_entered(area: Area2D) -> void:
+	if !enabled: return
+	
+	if (area as Projectile):
+		area.end_projectile()
+		blocked_projectile.emit()
 
 func _on_attack_cooldown_timeout() -> void:
 	is_attacking = false
+	attack_ready.emit()
 #endregion
 
-#region STATS GETTER
+#region STATS GETTERS
 
 func get_attack_cooldown() -> float:
 	return base_attack_cooldown * attack_cooldown

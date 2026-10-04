@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_2nhnq")
-collection = Array[String](["res://scenes/weapons/weapon_white_sword.tscn"])
+collection = Array[String](["res://scenes/weapons/weapon_TheScepter.tscn"])
 metadata/_custom_type_script = "uid://bfwl4hfirljls"

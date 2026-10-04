@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dhhrelf3wr4us"]
+
+[ext_resource type="PackedScene" uid="uid://q1egccrwchbr" path="res://scenes/weapons/weapon_base.tscn" id="1_5jcu8"]
+[ext_resource type="Script" uid="uid://cvo4we8n4aia2" path="res://resources/scripts/resources/attack_profile.gd" id="2_fq76d"]
+
+[sub_resource type="Resource" id="Resource_5jcu8"]
+script = ExtResource("2_fq76d")
+damage = 2
+force = 0.1
+stun_time = 0.1
+metadata/_custom_type_script = "uid://cvo4we8n4aia2"
+
+[node name="TheDagger" unique_id=858050485 instance=ExtResource("1_5jcu8")]
+attack_profile = SubResource("Resource_5jcu8")
+move_speed = 1.5
+attack_cooldown = 0.5
+attack_range = 1.0
+attack_radius = 0.5
+detection_range = 1.5
+
+[node name="Sprite2D" parent="." index="0" unique_id=1682521592]
+frame = 1
