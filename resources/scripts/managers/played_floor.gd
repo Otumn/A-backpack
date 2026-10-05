@@ -13,7 +13,7 @@ func _ready() -> void:
 	load_floor(p)
 
 func load_floor(params:FloorParams):
-	GeneralManager.load_run_data()
+	MainLogic.load_run_data()
 	
 	for x in params.size_x:
 		for y in params.size_y:
@@ -25,7 +25,7 @@ func load_floor(params:FloorParams):
 			@warning_ignore("integer_division")
 			if u == (params.size_x + 1) / 2 && v == (params.size_y + 1) / 2: # load the starting room
 				room = params.starting_room.instantiate() 
-				GeneralManager.spawn_player_bakcpack(player_parent, Vector2(x * room_size.x, y * room_size.y)) # this will eventually be replace by loading the correct player backpack state and its location from the run data
+				MainLogic.spawn_player_bakcpack(player_parent, Vector2(x * room_size.x, y * room_size.y)) # this will eventually be replace by loading the correct player backpack state and its location from the run data
 			else: # load a normal random room depending on floor params
 				var dir: String = params.get_random_room_dir()
 				var a = DirAccess.get_files_at(dir)
@@ -72,4 +72,4 @@ func load_floor(params:FloorParams):
 			var door:RoomDoor = params.room_doors.instantiate()
 			room_parent.add_child(door)
 			door.global_position = Vector2(y * room_size.x,(room_size.y * 0.5) + x * room_size.y)
-	HUD.display_in_game_HUD(true)
+	HUDLogic.display_in_game_HUD(true)

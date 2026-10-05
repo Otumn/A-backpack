@@ -16,18 +16,7 @@ collision_mask = 4
 input_pickable = false
 monitorable = false
 script = ExtResource("1_uvw4m")
-weapon_type = null
-weapon_element = null
-weapon_fuel = null
-target_preference = null
-is_projectile_blocker = null
-projectile_key = null
 attack_profile = null
-move_speed = null
-attack_cooldown = null
-attack_range = null
-attack_radius = null
-detection_range = null
 metadata/_custom_type_script = "uid://ix08gnpu147r"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1682521592]

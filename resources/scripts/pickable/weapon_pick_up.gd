@@ -18,7 +18,3 @@ func pick_up(player: PlayerBackpack):
 		pass #TODO: feedback and shit
 	
 	super.pick_up(player)
-
-#Collision only scans for the player
-func _on_body_entered(body: Node2D) -> void:
-	pick_up(body as PlayerBackpack)

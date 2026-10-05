@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dg647xrtj7s86"]
+
+[ext_resource type="PackedScene" uid="uid://dwi3yudqbeh6y" path="res://scenes/pickables/pickup_base.tscn" id="1_cfqj6"]
+[ext_resource type="Script" uid="uid://ctm6ywoskwlnc" path="res://resources/scripts/pickable/weapon_pick_up.gd" id="2_tmyce"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cfqj6"]
+
+[node name="PickupWeapon" unique_id=261115201 instance=ExtResource("1_cfqj6")]
+script = ExtResource("2_tmyce")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1392809123]
+shape = SubResource("CircleShape2D_cfqj6")
+
+[node name="Sprite2D" parent="." index="1" unique_id=905029254]
+visible = false

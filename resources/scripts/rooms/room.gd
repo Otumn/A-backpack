@@ -92,7 +92,7 @@ func clear_room():
 	disable_room()
 	unlock_room()
 	clearance_state = RoomClearanceState.CLEARED
-	GeneralManager.add_coins(coins_on_cleared)
+	MainLogic.add_coins(coins_on_cleared)
 	room_cleared.emit(self, x_coord, y_coord)
 #endregion
 

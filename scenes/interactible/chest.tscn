@@ -6,5 +6,4 @@
 [node name="Chest" unique_id=1992416722 instance=ExtResource("1_0j4y2")]
 script = ExtResource("2_ki4i1")
 amount = 3
-weapon_collection = null
-spawn_range = 25.0
+object_collection = null

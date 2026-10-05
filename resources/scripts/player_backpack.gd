@@ -18,8 +18,8 @@ var registered_interactible: Array[Interactible]
 
 #region 
 func _ready() -> void:
-	HUD.set_hp(current_health)
-	HUD.set_weapon_frames(max_weapons)
+	HUDLogic.set_hp(current_health)
+	HUDLogic.set_weapon_frames(max_weapons)
 
 func _process(delta: float) -> void:
 	manage_inputs()
@@ -82,7 +82,7 @@ func add_weapon(new_weapon:Weapon) -> bool:
 	new_weapon.call_deferred("enable_weapon")
 	new_weapon.name = "wp"+str(current_nb_weapons)
 	
-	HUD.add_weapon(new_weapon.sprite)
+	HUDLogic.add_weapon(new_weapon.sprite)
 	
 	return true
 
@@ -138,12 +138,19 @@ func _on_interactible_area_area_exited(area: Area2D) -> void:
 	remove_interactible(area as Interactible)
 #endregion
 
+#region PICKABLE MANAGEMENT
+
+func _on_pickable_area_area_entered(area: Area2D) -> void:
+	(area as Pickable).pick_up(self)
+
+#endregion
+
 func on_attacked(source:Node2D , attack:AttackProfile):
 	super.on_attacked(source, attack)
-	HUD.set_hp(current_health)
+	HUDLogic.set_hp(current_health)
 
 func on_death():
-	HUD.display_game_over(true)
+	HUDLogic.display_game_over(true)
 	super.on_death()
 
 func _on_damages_area_body_entered(body: Node2D) -> void: #can't remember why exactly that detection is done here, but I'm pretty sure I had a good reason

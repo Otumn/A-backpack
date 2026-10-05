@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dwi3yudqbeh6y"]
+
+[ext_resource type="Script" uid="uid://d0pf864tugxi5" path="res://resources/scripts/pickable/pickable.gd" id="1_n5nkl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8kg6k"]
+radius = 5.0
+
+[node name="PickupBase" type="Area2D" unique_id=261115201]
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_n5nkl")
+metadata/_custom_type_script = "uid://d0pf864tugxi5"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=905029254]
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1392809123]
+shape = SubResource("CircleShape2D_8kg6k")

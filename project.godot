@@ -19,9 +19,9 @@ config/icon="uid://dd41erfoqr6sb"
 
 Global2dCamera="*uid://cswcf6epv15ko"
 ReplayRecorder="*uid://bpfoa18rk1bqv"
-HUD="*uid://grd0f7q6hk7v"
-GeneralManager="*uid://cdrrvpefpi4uj"
-ProjectilePools="*uid://bm8mask600bsx"
+HUDLogic="*uid://grd0f7q6hk7v"
+MainLogic="*uid://cdrrvpefpi4uj"
+ProjectileLogic="*uid://bm8mask600bsx"
 
 [display]
 
@@ -110,6 +110,7 @@ pause={
 3d_physics/layer_4="props"
 2d_physics/layer_5="triggers"
 2d_physics/layer_6="projectiles"
+2d_physics/layer_7="pickables"
 
 [physics]
 

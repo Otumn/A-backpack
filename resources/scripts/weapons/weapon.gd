@@ -11,12 +11,15 @@ signal fired_projectile(projecile:Projectile)
 signal blocked_projectile()
 
 @export_group("Behaviour")
-@export var weapon_type:bool = false # TBD
+@export var weapon_type:WeaponType = WeaponType.OFFENCE
+enum WeaponType {OFFENCE, DEFENSE, SUPPORT}
 @export var weapon_element:bool = false # TBD
 @export var weapon_fuel:bool = false # TBD
 @export var target_preference:bool = false # TBD
 ##Will enemy projectiles be blocked upon touching the weapon?
 @export var is_projectile_blocker:bool = false
+## If true the weapon will always try to stay within detection range distance of player
+@export var stays_next_to_player:bool = false
 ## If left empty the weapon will behave like a melee weapon
 @export var projectile_key:String = ""
 
@@ -68,9 +71,7 @@ func _physics_process(delta: float) -> void:
 func enable_weapon():
 	set_process(true)
 	set_physics_process(true)
-	
-	if is_projectile_blocker:
-		projectiles_coll.disabled = false
+	projectiles_coll.disabled = !is_projectile_blocker
 	
 	enabled = true
 
@@ -86,6 +87,9 @@ func manage_position(delta:float):
 			global_position += (attack_position - global_position).normalized() * get_move_speed() * delta * (global_position.distance_to(attack_position) * 0.05)
 			if ((global_position.distance_to(attack_position) <= idle_distance_threshold + 5.0) or projectile_key != "") && not is_attacking:
 				attack()
+		if !is_near_player():
+			#reset_fight()
+			pass
 	else:
 		if global_position.distance_to(idle_position) > idle_distance_threshold:
 			global_position += (idle_position - global_position).normalized() * get_move_speed() * delta * (global_position.distance_to(idle_position) * 0.1)
@@ -96,6 +100,15 @@ func get_attack_position() -> Vector2:
 		return current_target.global_position + attack_offset * get_attack_range()
 	else:
 		return idle_position
+
+func is_near_player() -> bool:
+	if stays_next_to_player:
+		return get_distance_to_player() < get_detection_range()
+	else:
+		return true
+
+func get_distance_to_player() -> float:
+	return global_position.distance_to(weapon_center.global_position)
 #endregion
 
 #region FIGHT FUNCTIONS
@@ -114,7 +127,7 @@ func attack():
 	else:
 		is_attacking = true
 		
-		var p = ProjectilePools.fire_projectile(self, projectile_key, Projectile.ProjectileFaction.PLAYER, global_position, self.get_angle_to(current_target.global_position) + PI*0.5)
+		var p = ProjectileLogic.fire_projectile(self, projectile_key, Projectile.ProjectileFaction.PLAYER, global_position, self.get_angle_to(current_target.global_position) + PI*0.5)
 		fired_projectile.emit(p)
 		
 		attack_CD_timer.start()

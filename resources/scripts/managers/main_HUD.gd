@@ -28,10 +28,10 @@ var next_weapon_index = 0
 
 func _ready() -> void:
 	setup_pools()
-	GeneralManager.connect("coins_set", _on_coins_set)
-	GeneralManager.connect("coins_added", _on_coins_added)
-	GeneralManager.connect("value_set", _on_value_set)
-	GeneralManager.connect("value_added", _on_value_added)
+	MainLogic.connect("coins_set", _on_coins_set)
+	MainLogic.connect("coins_added", _on_coins_added)
+	MainLogic.connect("value_set", _on_value_set)
+	MainLogic.connect("value_added", _on_value_added)
 
 #region IN GAME HUD
 func display_in_game_HUD(toggle:bool):

@@ -72,7 +72,7 @@ func start_projectile(lau:Node2D, fac:ProjectileFaction, pos:Vector2, rot:float)
 ##Disable the projectile
 func end_projectile():
 	sprite.visible = false
-	coll.disabled = true
+	coll.set_deferred("disabled", true)
 	
 	set_process(false)
 	set_physics_process(false)
