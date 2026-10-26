@@ -14,7 +14,6 @@ metadata/_custom_type_script = "uid://cvo4we8n4aia2"
 attack_profile = SubResource("Resource_5jcu8")
 move_speed = 1.5
 attack_cooldown = 0.5
-attack_range = 1.0
 attack_radius = 0.5
 detection_range = 1.5
 

@@ -1,4 +1,4 @@
-class_name ProjectilePool
+class_name PoolParameters
 extends Resource
 
 @export var projectile:PackedScene

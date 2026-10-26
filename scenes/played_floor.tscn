@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnom6njcs1eja"]
 
-[ext_resource type="Script" uid="uid://chqetbt6u33il" path="res://resources/scripts/managers/played_floor.gd" id="1_w5sj3"]
+[ext_resource type="Script" uid="uid://chqetbt6u33il" path="res://resources/scripts/played_floor.gd" id="1_w5sj3"]
 [ext_resource type="Resource" uid="uid://0eaxil8q6h3g" path="res://resources/TestFloor.tres" id="2_48hb2"]
 
 [node name="PlayedFloor" type="Node2D" unique_id=552686263]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://grd0f7q6hk7v"]
 
-[ext_resource type="Script" uid="uid://c52j64ehmiwgs" path="res://resources/scripts/managers/main_HUD.gd" id="1_ckv3j"]
+[ext_resource type="Script" uid="uid://c52j64ehmiwgs" path="res://resources/scripts/managers/HUD_logic.gd" id="1_ckv3j"]
 [ext_resource type="Texture2D" uid="uid://xatkgtxd6n4c" path="res://resources/sprites/UI/UI_HealthPoint.png" id="1_s614x"]
 [ext_resource type="Theme" uid="uid://js58e2t6bkwv" path="res://resources/themes/InGameMenuTheme.tres" id="2_tlvka"]
 [ext_resource type="Texture2D" uid="uid://btppb6h2bh5xv" path="res://resources/sprites/UI/UI_WeaponFrame.png" id="3_ttlsy"]
@@ -23,7 +23,7 @@ action = &"pause"
 [sub_resource type="Shortcut" id="Shortcut_h71hk"]
 events = [SubResource("InputEventAction_6uink")]
 
-[node name="MainHUD" type="CanvasLayer" unique_id=1009840891]
+[node name="HUBLogic" type="CanvasLayer" unique_id=1009840891]
 layer = 2
 script = ExtResource("1_ckv3j")
 

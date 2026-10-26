@@ -1,8 +1,12 @@
 [gd_resource type="Resource" script_class="ObjectSet" format=3 uid="uid://cxhmlajt8fx7g"]
 
 [ext_resource type="Script" uid="uid://bfwl4hfirljls" path="res://resources/scripts/resources/object_set.gd" id="1_2nhnq"]
+[ext_resource type="PackedScene" uid="uid://dhhrelf3wr4us" path="res://scenes/weapons/weapon_TheDagger.tscn" id="1_75qt8"]
+[ext_resource type="PackedScene" uid="uid://blhn601xpajb3" path="res://scenes/weapons/weapon_TheRapier.tscn" id="2_yib1l"]
+[ext_resource type="PackedScene" uid="uid://dby5e02g1dhlk" path="res://scenes/weapons/weapon_TheScepter.tscn" id="3_1iogn"]
+[ext_resource type="PackedScene" uid="uid://dckyv375psitl" path="res://scenes/weapons/weapon_TheSword.tscn" id="4_etxpy"]
 
 [resource]
 script = ExtResource("1_2nhnq")
-collection = Array[String](["res://scenes/weapons/weapon_TheRapier.tscn", "res://scenes/weapons/weapon_TheDagger.tscn", "res://scenes/weapons/weapon_TheScepter.tscn", "res://scenes/weapons/weapon_TheSword.tscn"])
+collection = Array[PackedScene]([ExtResource("1_75qt8"), ExtResource("2_yib1l"), ExtResource("3_1iogn"), ExtResource("4_etxpy")])
 metadata/_custom_type_script = "uid://bfwl4hfirljls"

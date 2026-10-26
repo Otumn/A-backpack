@@ -13,9 +13,9 @@ func _ready() -> void:
 	shoot_timer.start()
 
 func shoot():
-	var r = self.get_angle_to(MainLogic.player.global_position) + (PI * 0.5) - global_rotation if target_player else rotation
+	var r = self.get_angle_to(GblMainLogic.player.global_position) + (PI * 0.5) - global_rotation if target_player else rotation
 	print(str(r) + " : " + str(rotation))
-	ProjectileLogic.fire_projectile(self, projectile_key, Projectile.ProjectileFaction.MOBS, global_position, r)
+	GblPoolsLogic.fire_projectile(self, projectile_key, Projectile.ProjectileFaction.MOBS, global_position, r)
 	shoot_timer.start()
 
 func push(_dir: Vector2, _force:float = 150.0, _time: float = 0.1):

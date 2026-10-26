@@ -2,4 +2,4 @@
 class_name ObjectSet
 extends Resource
 
-@export var collection:Array[String]
+@export var collection: Array[PackedScene]

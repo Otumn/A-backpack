@@ -127,7 +127,7 @@ func attack():
 	else:
 		is_attacking = true
 		
-		var p = ProjectileLogic.fire_projectile(self, projectile_key, Projectile.ProjectileFaction.PLAYER, global_position, self.get_angle_to(current_target.global_position) + PI*0.5)
+		var p = GblPoolsLogic.fire_projectile(self, projectile_key, Projectile.ProjectileFaction.PLAYER, global_position, self.get_angle_to(current_target.global_position) + PI*0.5)
 		fired_projectile.emit(p)
 		
 		attack_CD_timer.start()

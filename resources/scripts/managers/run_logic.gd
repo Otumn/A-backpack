@@ -1,4 +1,4 @@
-class_name GameManager
+class_name RunLogic
 extends Node
 
 signal coins_set(old_amount:int, new_amount:int)

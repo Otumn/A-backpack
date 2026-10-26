@@ -12,7 +12,6 @@ starter_target = true
 
 [node name="Chest" parent="Entities" parent_id_path=PackedInt32Array(155203376) index="0" unique_id=1992416722 instance=ExtResource("2_vlnwn")]
 position = Vector2(0, 128)
-amount = 1
 object_collection = ExtResource("3_aava1")
 
 [node name="Geometry" parent="Tiles" parent_id_path=PackedInt32Array(251398454) index="0" unique_id=1287474614]

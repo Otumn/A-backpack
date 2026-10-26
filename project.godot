@@ -17,11 +17,11 @@ config/icon="uid://dd41erfoqr6sb"
 
 [autoload]
 
-Global2dCamera="*uid://cswcf6epv15ko"
+Gbl2DCamera="*uid://cswcf6epv15ko"
+GblHUDLogic="*uid://grd0f7q6hk7v"
+GblMainLogic="*uid://cdrrvpefpi4uj"
+GblPoolsLogic="*uid://bm8mask600bsx"
 ReplayRecorder="*uid://bpfoa18rk1bqv"
-HUDLogic="*uid://grd0f7q6hk7v"
-MainLogic="*uid://cdrrvpefpi4uj"
-ProjectileLogic="*uid://bm8mask600bsx"
 
 [display]
 

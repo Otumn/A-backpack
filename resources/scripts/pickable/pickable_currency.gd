@@ -8,9 +8,9 @@ enum CurrencyType {COINS, VALUE, FUEL}
 func pick_up(_player: PlayerBackpack):
 	match type:
 		CurrencyType.COINS:
-			GeneralManager.add_coins(amount)
+			GblMainLogic.add_coins(amount)
 		CurrencyType.VALUE:
-			GeneralManager.add_value(amount)
+			GblMainLogic.add_value(amount)
 		CurrencyType.FUEL:
 			pass
 	

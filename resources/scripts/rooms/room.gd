@@ -79,7 +79,7 @@ func toggle_segments(right:bool, bot:bool, left:bool, top:bool):
 #region ROOM STATE
 func enter_room():
 	
-	Global2dCamera.tween_to_target(cam_target, Tween.TRANS_CUBIC, 1.5)
+	Gbl2DCamera.tween_to_target(cam_target, Tween.TRANS_CUBIC, 1.5)
 	room_entered.emit(self, x_coord, y_coord)
 
 func start_room():
@@ -92,7 +92,7 @@ func clear_room():
 	disable_room()
 	unlock_room()
 	clearance_state = RoomClearanceState.CLEARED
-	MainLogic.add_coins(coins_on_cleared)
+	GblMainLogic.add_coins(coins_on_cleared)
 	room_cleared.emit(self, x_coord, y_coord)
 #endregion
 

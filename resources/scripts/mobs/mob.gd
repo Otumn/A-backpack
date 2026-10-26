@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(_delta: float) -> void:
 	if can_move():  
-		move_dir = (MainLogic.player.global_position - global_position).normalized()
+		move_dir = (GblMainLogic.player.global_position - global_position).normalized()
 		velocity = move_dir * get_move_speed()
 		
 	move_and_slide()
@@ -72,7 +72,7 @@ func can_move() -> bool:
 	return not is_pushed
 
 func get_scaled_health() -> int:
-	return roundi(get_health() * MainLogic.run_data.difficulty)
+	return roundi(get_health() * GblMainLogic.run_data.difficulty)
 
 func get_health() -> int:
 	return roundi(base_health*health)

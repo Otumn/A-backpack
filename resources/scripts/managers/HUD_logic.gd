@@ -1,4 +1,4 @@
-class_name MainHUD
+class_name HUDLogic
 extends CanvasLayer
 
 signal hp_changed(old_hp:int, new_hp:int)
@@ -27,18 +27,18 @@ var current_weapon_amount = 6
 var next_weapon_index = 0
 
 func _ready() -> void:
-	setup_pools()
-	MainLogic.connect("coins_set", _on_coins_set)
-	MainLogic.connect("coins_added", _on_coins_added)
-	MainLogic.connect("value_set", _on_value_set)
-	MainLogic.connect("value_added", _on_value_added)
+	setup_frames()
+	GblMainLogic.connect("coins_set", _on_coins_set)
+	GblMainLogic.connect("coins_added", _on_coins_added)
+	GblMainLogic.connect("value_set", _on_value_set)
+	GblMainLogic.connect("value_added", _on_value_added)
 
 #region IN GAME HUD
 func display_in_game_HUD(toggle:bool):
 	in_game_cont.visible = toggle
 	update_displayed_menu("in_game_HUD")
 
-func setup_pools():
+func setup_frames():
 	var parent = hp.get_parent()
 	for i in hp_sprite_pool - 1:
 		var d
@@ -103,7 +103,7 @@ func _on_p_options_pressed() -> void:
 
 func _on_p_menu_pressed() -> void:
 	display_pause_menu(false)
-	Global2dCamera.is_setup = false
+	Gbl2DCamera.is_setup = false
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 #endregion
 
@@ -121,7 +121,7 @@ func display_game_over(toggle:bool):
 	game_over_cont.visible = toggle
 
 func _on_go_button_pressed() -> void:
-	Global2dCamera.is_setup = false
+	Gbl2DCamera.is_setup = false
 	get_tree().reload_current_scene()
 	display_game_over(false)
 #endregion

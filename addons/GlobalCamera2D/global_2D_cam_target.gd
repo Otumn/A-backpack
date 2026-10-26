@@ -29,9 +29,9 @@ extends Node2D
 
 func _ready() -> void:
 	if starter_target :
-		Global2dCamera.global_position = global_position
+		Gbl2DCamera.global_position = global_position
 		await get_tree().create_timer(0.1).timeout
-		Global2dCamera.cut_to_target(self, true)
+		Gbl2DCamera.cut_to_target(self, true)
 		var t = create_tween().set_trans(Tween.TRANS_SINE)
-		t.tween_method(Global2dCamera.set_fade_alpha, 1.0, 0.0, 0.35)
-		Global2dCamera.is_setup = true
+		t.tween_method(Gbl2DCamera.set_fade_alpha, 1.0, 0.0, 0.35)
+		Gbl2DCamera.is_setup = true

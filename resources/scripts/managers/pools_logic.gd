@@ -1,8 +1,8 @@
 @icon("res://addons/at-icons/node2d/ammunition.svg")
-class_name ProjectilePoolsLogic
+class_name PoolsLogic
 extends Node2D
 
-@export var pools_parameters:Dictionary[String, ProjectilePool]
+@export var pools_parameters:Dictionary[String, PoolParameters]
 
 var pools_refs:Dictionary[String, Node2D]
 
